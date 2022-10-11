@@ -30,7 +30,7 @@ public class ViewAllContactsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// Call on people helper to query table and return all rows
+		// Create an instance of people helper
 		PersonHelper personHelper = new PersonHelper();
 		
 		// Passes a list of people to index
@@ -39,11 +39,18 @@ public class ViewAllContactsServlet extends HttpServlet {
 		
 		// Redirect to index page if no people exist in the database
 		if (personHelper.showAllPeople().isEmpty()) {
-			path = "/index.html";
+			path = "/view-people.jsp";
 		}
 		
 		// Redirected to index with an attribute called allpeople that contains all people in the database
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 }

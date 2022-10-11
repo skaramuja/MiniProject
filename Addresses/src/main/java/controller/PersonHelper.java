@@ -26,9 +26,9 @@ public class PersonHelper {
 	 * Query people table and return all rows
 	 * @return rows in people table
 	 */
-	public List<Person> showAllPeople() {
+	public List showAllPeople() {
 		EntityManager entityManager = emfactory.createEntityManager();
-		List<Person> allPeople = entityManager.createQuery("SELECT i from Person i").getResultList();
+		List allPeople = entityManager.createQuery("SELECT i from Person i").getResultList();
 		return allPeople;
 
 	}
@@ -41,7 +41,7 @@ public class PersonHelper {
 		EntityManager entityManager = emfactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		TypedQuery<Person> typedQuery = entityManager
-				.createQuery("select li from Person li where li.Person = :selectedCountry", Person.class);
+				.createQuery("select person from Person person where person.id = :selectedPerson", Person.class);
 
 		typedQuery.setParameter("selectedPerson", person.getId());
 

@@ -58,12 +58,10 @@ public class Person {
 	 * Non-default constructor that takes fist name, last name, and list of addresses as parameters
 	 * @param firstName
 	 * @param lastName
-	 * @param listOfAddresses
 	 */
-	public Person(String firstName, String lastName, List<Address> listOfAddresses) {
+	public Person(String firstName, String lastName) {
 		setFirstName(firstName);
 		setLastName(lastName);
-		setListOfAddresses(listOfAddresses);
 	}
 
 	/**
