@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +37,8 @@ public class EditPersonServlet extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String idString = request.getParameter("id");
+		String birthdateString = request.getParameter("birthday");
+		LocalDate birthdate = LocalDate.parse(birthdateString);
 		
 		// Querying the database to find person using id
 		Integer id = Integer.parseInt(idString);
@@ -43,6 +47,7 @@ public class EditPersonServlet extends HttpServlet {
 		// Update person with user input
 		newPerson.setFirstName(firstName);
 		newPerson.setLastName(lastName);
+		newPerson.setBirthDate(birthdate);
 		
 		// Update the database with new information
 		personHelper.updatePerson(newPerson);

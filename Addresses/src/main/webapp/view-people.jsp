@@ -22,6 +22,7 @@ charset=UTF-8" pageEncoding="UTF-8"%>
 					<td><input type="radio" name="id" value="${person.id}"></td>
 					<td>${person.firstName}</td>
 					<td>${person.lastName}</td>
+					<td>${person.birthDate}</td>
 				</tr>
 			</c:forEach>
 		</table>

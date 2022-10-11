@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +37,11 @@ public class AddPersonServlet extends HttpServlet {
 		// Collect parameters from user
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
+		String birthdateString = request.getParameter("birthday");
+		LocalDate birthdate = LocalDate.parse(birthdateString);
 
 		// Insert person into the database
-		Person person = new Person(firstName, lastName);
+		Person person = new Person(firstName, lastName, birthdate);
 		personHelper.insertPerson(person);
 
 		// User is redirected

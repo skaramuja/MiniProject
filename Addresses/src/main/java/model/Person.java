@@ -6,6 +6,7 @@
 
 package model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,6 +29,8 @@ public class Person {
 	private String firstName;
 	@Column(name="LASTNAME")
 	private String lastName;
+	@Column(name="BIRTHDATE")
+	private LocalDate birthDate;
 	
 	// A Person can have many addresses and many people can have the same address
 	@ManyToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
@@ -41,16 +44,18 @@ public class Person {
 	}
 
 	/**
-	 * Non-default constructor that takes id, fist name, last name, and list of addresses as parameters
+	 * Non-default constructor that takes id, fist name, last name, birthdate, and list of addresses as parameters
 	 * @param id
 	 * @param firstName
 	 * @param lastName
+	 * @param birthdate
 	 * @param listOfAddresses
 	 */
-	public Person(int id, String firstName, String lastName, List<Address> listOfAddresses) {
+	public Person(int id, String firstName, String lastName, LocalDate birthdate, List<Address> listOfAddresses) {
 		setId(id);
 		setFirstName(firstName);
 		setLastName(lastName);
+		setBirthDate(birthdate);
 		setListOfAddresses(listOfAddresses);
 	}
 	
@@ -59,9 +64,10 @@ public class Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Person(String firstName, String lastName) {
+	public Person(String firstName, String lastName, LocalDate birthdate) {
 		setFirstName(firstName);
 		setLastName(lastName);
+		setBirthDate(birthdate);
 	}
 
 	/**
@@ -105,6 +111,21 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+
+	/**
+	 * Getter for birthDate
+	 */
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	/**
+	 * Setter for birthDate
+	 */
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
 
 	/**
 	 * Getter for lists
@@ -122,7 +143,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + getId() + ", firstName=" + getFirstName() + ", lastName=" + getLastName()
+		return "Person [id=" + getId() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", birthdate=" + getBirthDate()
 				+ ", listOfAddresses=" + getListOfAddresses() + "]";
 	}
 }

@@ -23,6 +23,9 @@
 	
 		Last Name: ${person.lastName}
 		<br /> 
+		
+		Birthday: ${person.birthDate}
+		<br /> 
 		<br />
 		Addresses:
 		<br />  

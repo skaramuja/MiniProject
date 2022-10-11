@@ -20,6 +20,10 @@ charset=UTF-8" pageEncoding="UTF-8"%>
 		<p>
 			Last Name: <input type="text" name="lastName" required>
 		</p>
+		
+		<p>
+			Birthday: <input type="date" id="birthday" name="birthday" required>
+		</p>
 
 		<input type="submit" value="SUBMIT">
 	</form>

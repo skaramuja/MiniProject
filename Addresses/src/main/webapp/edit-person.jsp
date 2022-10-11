@@ -15,6 +15,7 @@
 		<input type="hidden" name="id" value="${person.id}"> 
 		<p>First Name: <input type="text" name="firstName" value="${person.firstName}"></p>
 		<p>Last Name: <input type="text" name="lastName" value="${person.lastName}"></p>
+		<p>Birthday: <input type="date" name="birthday" value="${person.birthDate}"></p>
 		<br>
 		<p><input type="submit" value="SAVE"></p>
 	</form>
