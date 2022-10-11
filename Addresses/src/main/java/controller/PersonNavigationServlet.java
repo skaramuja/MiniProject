@@ -69,10 +69,26 @@ public class PersonNavigationServlet extends HttpServlet {
 				
 				// Handle exception if no person was selected to edit
 			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select a country");
+				System.out.println("Forgot to select a person");
 			}
 
 		} else if (action.equals("DETAILS")) {
+			try {
+				// Getting the ID parameter of the person to edit
+				Integer id = Integer.parseInt(idString);
+				
+				// Querying the database to find person using id
+				Person person = personHelper.searchForPersonById(id);
+				
+				// User redirected with an attribute person and all addresses
+				request.setAttribute("person", person);
+				request.setAttribute("allAddresses", person.getListOfAddresses());
+				path = "/viewdetails-person.jsp";
+			}
+			// Handle exception if no person was selected
+			catch (NumberFormatException e) {
+				System.out.println("Forgot to select a person");
+			}
 
 		// Redirect to add-person page to add a new person
 		} else if (action.equals("ADD")) {
