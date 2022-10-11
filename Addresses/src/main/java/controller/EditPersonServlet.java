@@ -31,9 +31,6 @@ public class EditPersonServlet extends HttpServlet {
 		// Create an instance of PersonHelper
 		PersonHelper personHelper = new PersonHelper();
 		
-		Integer personId = Integer.parseInt(request.getParameter("personId"));
-		Person person = personHelper.searchForPersonById(personId);
-		
 		// Collect parameters from user
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
