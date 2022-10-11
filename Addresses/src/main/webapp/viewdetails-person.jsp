@@ -23,14 +23,14 @@
 	
 		Last Name: ${person.lastName}
 		<br /> 
-	
+		<br />
 		Addresses:
 		<br />  
 		
 		<table>
 			<c:forEach items="${requestScope.allAddresses}" var="address">
 				<tr>
-					<td><input type="radio" name="AddressId" value="${address.id}"></td>
+					<td><input type="radio" name="addressId" value="${address.id}"></td>
 					<td>${address.getStreet()}</td>
 					<td>${address.getCity()}</td>
 					<td>${address.getState()}</td>

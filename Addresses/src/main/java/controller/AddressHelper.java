@@ -12,7 +12,7 @@ public class AddressHelper {
 	// Create database connection
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Addresses");
 
-	public void insertPerson(Address adress) {
+	public void insertAddress(Address adress) {
 		EntityManager entityManager = emfactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(adress);
@@ -28,7 +28,7 @@ public class AddressHelper {
 		EntityManager entityManager = emfactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		TypedQuery<Address> typedQuery = entityManager
-				.createQuery("select li from Address li where li.Address = :selectedAdress", Address.class);
+				.createQuery("select address from Address address where address.id = :selectedAddress", Address.class);
 
 		typedQuery.setParameter("selectedAddress", address.getId());
 

@@ -26,7 +26,7 @@ public class Address {
 	@Column(name="STATE")
 	private String state;
 	@Column(name="ZIPCODE")
-	private int zipCode;
+	private String zipCode;
 	
 	/**
 	 * Default constructor with no parameters
@@ -43,7 +43,7 @@ public class Address {
 	 * @param state
 	 * @param zipCode
 	 */
-	public Address(int id, String street, String city, String state, int zipCode) {
+	public Address(int id, String street, String city, String state, String zipCode) {
 		setId(id);
 		setStreet(street);
 		setCity(city);
@@ -52,13 +52,13 @@ public class Address {
 	}
 	
 	/**
-	 * Non-default constructor that takes street, city, state, and zip code as parameters
+	 * Non-default constructor that takes street, city, state, and String code as parameters
 	 * @param street
 	 * @param city
 	 * @param state
 	 * @param zipCode
 	 */
-	public Address(String street, String city, String state, int zipCode) {
+	public Address(String street, String city, String state, String zipCode) {
 		setStreet(street);
 		setCity(city);
 		setState(state);
@@ -124,14 +124,14 @@ public class Address {
 	/**
 	 * Getter for zip code
 	 */
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
 	/**
 	 * Setter for zip code
 	 */
-	public void setZipCode(int zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
