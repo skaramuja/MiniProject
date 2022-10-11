@@ -56,6 +56,21 @@ public class PersonNavigationServlet extends HttpServlet {
 			}
 			
 		} else if (action.equals("EDIT")) {
+			try {
+				// Getting the ID parameter of the person to edit
+				Integer id = Integer.parseInt(idString);
+				
+				// Querying the database to find person using id
+				Person person = personHelper.searchForPersonById(id);
+				
+				// User redirected to edit-person.jsp with an attribute person that
+				request.setAttribute("person", person);
+				path = "/edit-person.jsp";
+				
+				// Handle exception if no person was selected to edit
+			} catch (NumberFormatException e) {
+				System.out.println("Forgot to select a country");
+			}
 
 		} else if (action.equals("DETAILS")) {
 
