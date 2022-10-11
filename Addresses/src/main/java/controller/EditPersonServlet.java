@@ -31,6 +31,9 @@ public class EditPersonServlet extends HttpServlet {
 		// Create an instance of PersonHelper
 		PersonHelper personHelper = new PersonHelper();
 		
+		Integer personId = Integer.parseInt(request.getParameter("personId"));
+		Person person = personHelper.searchForPersonById(personId);
+		
 		// Collect parameters from user
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
@@ -38,14 +41,14 @@ public class EditPersonServlet extends HttpServlet {
 		
 		// Querying the database to find person using id
 		Integer id = Integer.parseInt(idString);
-		Person person = personHelper.searchForPersonById(id);
+		Person newPerson = personHelper.searchForPersonById(id);
 		
 		// Update person with user input
-		person.setFirstName(firstName);
-		person.setLastName(lastName);
+		newPerson.setFirstName(firstName);
+		newPerson.setLastName(lastName);
 		
 		// Update the database with new information
-		personHelper.updatePerson(person);
+		personHelper.updatePerson(newPerson);
 		
 		// Redirect the user to servlet 
 		getServletContext().getRequestDispatcher("/viewAllContactsServlet").forward(request, response);

@@ -4,23 +4,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Address</title>
+<title>Edit Address</title>
 </head>
 <body>
-	<h1>${person.getFirstName()}
-		${person.getLastName()}</h1>
 
-	<form action="addAddressServlet" method="post">
+<h1>Edit Address</h1>
+
+<form action="editAddressServlet" method="post">
 
 		<input type="hidden" name="personId" value="${person.id}"> 
+		<input type="hidden" name="addressId" value="${address.id}"> 
 		
-		<p> Street: <input type="text" name="street"> </p>
-
-		<p> City: <input type="text"
-			name="city"> 
-
+		<p>Street: <input type="text" name="street" value="${address.street}"></p>
+		
+		<p>City: <input type="text" name="city" value="${address.city}">
+		
 		<select name="state" id="state">
-						<option value="Alabama">Alabama</option>
+			<option value="${address.state}" selected>${address.state}</option>
+			<option value="Alabama">Alabama</option>
 			<option value="Alaska">Alaska</option>
 			<option value="Arizona">Arizona</option>
 			<option value="Arkansas">Arkansas</option>
@@ -79,10 +80,10 @@
 			
 		</select></p>
 		
-
-		<p> Zip Code: <input type="text" name="zipCode"> </p>
-		<br> 
-		<input type="submit" value="ADD" name="action">
+		
+		<p>Zip Code: <input type="text" name="zipCode" value="${address.zipCode}"></p>
+		<br>
+		<p><input type="submit" value="SAVE"></p>
 	</form>
 
 </body>

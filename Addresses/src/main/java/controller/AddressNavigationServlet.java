@@ -37,17 +37,18 @@ public class AddressNavigationServlet extends HttpServlet {
 		AddressHelper addressHelper = new AddressHelper();
 		
 		String action = request.getParameter("action");
-		String idString = request.getParameter("id");
+		String personIdString = request.getParameter("personId");
+		String addressIdString = request.getParameter("addressId");
 		
 		String path = "/personNavigationServlet";
 		
 		if (action.equals("DELETE")) { 
 			try {
 				// Getting the ID parameter of the person 
-				Integer personId = Integer.parseInt(request.getParameter("personId"));
+				Integer personId = Integer.parseInt(personIdString);
 				
 				// Getting the ID parameter of the address
-				Integer addressId = Integer.parseInt(request.getParameter("addressId"));
+				Integer addressId = Integer.parseInt(addressIdString);
 				
 				// Querying the database to find person using id
 				Person person = personHelper.searchForPersonById(personId);
@@ -88,6 +89,17 @@ public class AddressNavigationServlet extends HttpServlet {
 			}
 			
 		} else if (action.equals("EDIT")) {
+			// Getting the ID parameter of the address to edit
+			Integer personId = Integer.parseInt(personIdString);
+			Integer addressId = Integer.parseInt(addressIdString);
+			
+			Person person = personHelper.searchForPersonById(personId);
+			request.setAttribute("person", person);
+						
+			Address address = addressHelper.searchForAddressById(addressId);
+			request.setAttribute("address", address);
+						
+			path = "/edit-address.jsp";
 			
 		} else if (action.equals("ADD")) {
 			// Getting the ID parameter of the person 
