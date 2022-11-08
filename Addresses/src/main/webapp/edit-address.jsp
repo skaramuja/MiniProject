@@ -5,12 +5,50 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit Address</title>
+<script>
+
+  function checkForm(form) {
+    // validation fails if the input is blank
+    if(form.street.value == "") {
+      alert("Error: Please eneter a street");
+      form.street.focus();
+      return false;
+    }
+    
+    if(form.city.value == "") {
+        alert("Error: Please eneter a city");
+        form.city.focus();
+        return false;
+      }
+    
+    if(form.zipCode.value == "") {
+        alert("Error: Please eneter a zip code!");
+        form.zipCode.focus();
+        return false;
+      }
+    
+
+	if (form.zipCode.value.length != 5) {
+			alert("Error: Please enter a 5 digit zip code.");
+			form.zipCode.focus();
+			return false;
+		} else if (isNaN(form.zipCode.value)) {
+			alert("Error: Please enter valid zip code (digit 0-9).");
+			form.zipCode.focus();
+			return false;
+		}
+
+		//validation was successful
+		return true;
+	}
+</script>
+
 </head>
 <body>
 
 <h1>Edit Address</h1>
 
-<form action="editAddressServlet" method="post">
+<form action="editAddressServlet" method="post" onsubmit="return checkForm(this);">
 
 		<input type="hidden" name="personId" value="${person.id}"> 
 		<input type="hidden" name="addressId" value="${address.id}"> 

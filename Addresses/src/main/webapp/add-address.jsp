@@ -5,12 +5,57 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Address</title>
+
+<script>
+
+  function checkForm(form) {
+    // validation fails if the input is blank
+    if(form.street.value == "") {
+      alert("Error: Please eneter a street");
+      form.street.focus();
+      return false;
+    }
+    
+    if(form.city.value == "") {
+        alert("Error: Please eneter a city");
+        form.city.focus();
+        return false;
+      }
+    
+    if(form.zipCode.value == "") {
+        alert("Error: Please eneter a zip code!");
+        form.zipCode.focus();
+        return false;
+      }
+    
+
+	if (form.zipCode.value.length != 5) {
+			alert("Error: Please enter a 5 digit zip code.");
+			form.zipCode.focus();
+			return false;
+		} else if (isNaN(form.zipCode.value)) {
+			alert("Error: Please enter valid zip code (digit 0-9).");
+			form.zipCode.focus();
+			return false;
+		}
+
+		if (form.state.value == "default") {
+			alert("Error: Please select a state.");
+			form.state.focus();
+			return false;
+		} 
+
+		//validation was successful
+		return true;
+	}
+</script>
+
 </head>
 <body>
 	<h1>${person.getFirstName()}
 		${person.getLastName()}</h1>
 
-	<form action="addAddressServlet" method="post">
+	<form action="addAddressServlet" method="post" onsubmit="return checkForm(this);">
 
 		<input type="hidden" name="personId" value="${person.id}"> 
 		
@@ -20,7 +65,8 @@
 			name="city"> 
 
 		<select name="state" id="state">
-						<option value="Alabama">Alabama</option>
+			<option value="default">Select State</option>
+			<option value="Alabama">Alabama</option>
 			<option value="Alaska">Alaska</option>
 			<option value="Arizona">Arizona</option>
 			<option value="Arkansas">Arkansas</option>
